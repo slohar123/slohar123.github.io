@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#100c20">
-  <meta name="description" content="Slohar's neon-lit personal game arcade. Pick a rival and climb to the top in Snake & Ladders.">
-  <title>Slohar's Arcade — Snake &amp; Ladders</title>
+  <meta name="description" content="Slohar's neon-lit personal game arcade with Snake & Ladders and Tic Tac Toe.">
+  <title>Slohar's Arcade — Play the Games</title>
   <style>
     :root{--ink:#100c20;--panel:#1b1530;--cream:#fff5dc;--muted:#b8abc9;--pink:#ff4f9a;--cyan:#58edff;--lime:#c8ff54;--gold:#ffd45a;--line:#44345f;--shadow:0 12px 0 #090714,0 22px 42px #08061188}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 80% 0%,#42205c 0,transparent 35%),radial-gradient(ellipse at 0% 40%,#102e45 0,transparent 30%),var(--ink);color:var(--cream);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5}button,a{font:inherit}a{color:inherit}button{color:inherit}button:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:4px}.wrap{width:min(1120px,calc(100% - 36px));margin:auto}.eyebrow{color:var(--cyan);font-size:.75rem;font-weight:900;letter-spacing:.18em;text-transform:uppercase}.topbar{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff18}.brand{display:flex;align-items:center;gap:12px;font-weight:1000;letter-spacing:.06em}.brand-mark{display:grid;place-items:center;width:38px;height:38px;border:2px solid var(--lime);border-radius:11px;color:var(--lime);font-size:1.25rem;box-shadow:3px 3px 0 var(--pink);transform:rotate(-4deg)}.topbar nav{display:flex;gap:24px;font-size:.9rem;font-weight:800}.topbar nav a{text-decoration:none;color:var(--muted)}.topbar nav a:hover{color:var(--cyan)}
@@ -17,6 +17,8 @@
     @media(max-width:760px){.hero{grid-template-columns:1fr;gap:28px;padding:53px 0 38px}.hero-copy{max-width:650px}.cabinet{max-width:560px;margin:0 auto;transform:none}.game-card{grid-template-columns:1fr}.game-art{padding:22px}.mini-board{max-width:350px}.setup{grid-template-columns:1fr;gap:22px}.play-area{grid-template-columns:1fr}.play-panel{order:-1}.play-panel .dice{display:inline-grid;vertical-align:middle;margin:8px 14px 8px 0}.section{padding-bottom:56px}}
     @media(max-width:480px){.wrap{width:min(100% - 24px,1120px)}.topbar{height:64px}.topbar nav{gap:12px;font-size:.78rem}.brand{font-size:.88rem}.hero h1{font-size:clamp(3.1rem,18vw,5rem)}.section-head{display:block}.section-head p{margin-top:10px}.game-art{padding:14px}.game-copy{padding:24px}.board-wrap{padding:6px}.board{gap:2px}.square{border-radius:2px}.footer{display:block}.footer span{display:block;margin-top:5px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+
+    .ttt-board{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;width:min(100%,480px);margin:auto}.ttt-cell{aspect-ratio:1;border:1px solid #634d79;border-radius:16px;background:#281d3b;color:var(--cream);font-size:clamp(2.5rem,10vw,5rem);font-weight:1000;cursor:pointer;box-shadow:0 5px 0 #0c0915}.ttt-cell:hover:enabled{background:#37254b;transform:translateY(-2px)}.ttt-cell:disabled{cursor:default}.ttt-cell.x{color:var(--cyan);text-shadow:0 0 18px #58edff75}.ttt-cell.o{color:var(--pink);text-shadow:0 0 18px #ff4f9a75}.ttt-panel{margin-top:22px;padding:clamp(20px,4vw,32px);border:1px solid var(--line);border-radius:22px;background:#171225}.ttt-toolbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}.ttt-status{min-height:1.5em;margin:14px 0 0;color:var(--cream);font-weight:850}.ttt-board-wrap{padding:clamp(12px,3vw,24px);border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,#211832,#14101f)}.tic-cover{width:min(100%,360px);aspect-ratio:1.35;display:grid;place-items:center;margin:auto;border:2px solid #644a79;border-radius:14px;background:radial-gradient(circle at 50% 45%,#362248,#151121 72%);box-shadow:inset 0 0 28px #58edff15}.tic-cover svg{width:82%;height:82%}.tic-cover text{font-family:system-ui,sans-serif;font-weight:1000}
   </style>
 </head>
 <body>
@@ -41,11 +43,25 @@
     </section>
 
     <section class="section" id="games" aria-labelledby="games-title">
-      <div class="section-head"><div><div class="eyebrow">THE GAME FLOOR</div><h2 id="games-title">Pick your game.</h2></div><p>One board, two tokens, and just enough luck to keep you coming back.</p></div>
+      <div class="section-head"><div><div class="eyebrow">THE GAME FLOOR</div><h2 id="games-title">Pick your game.</h2></div><p>Two quick games, a few playful rivals, and plenty of reasons for one more round.</p></div>
       <article class="game-card">
         <div class="game-art" aria-label="Snake and Ladders board preview"><div class="mini-board" id="mini-board" aria-hidden="true"></div></div>
         <div class="game-copy"><div class="eyebrow">FEATURED · CLASSIC CHAOS</div><h3>Snake<br>&amp; Ladders</h3><p>Race from square 1 to 100. Catch a ladder for a lift, dodge a snake's slide, and see if your luck can beat the house.</p><div class="chips"><span class="chip">🎲 Dice rolling</span><span class="chip">🪜 Big climbs</span><span class="chip">🐍 Sneaky slides</span></div><a class="btn btn-primary" href="#choose">PREVIEW &amp; PLAY <span aria-hidden="true">→</span></a></div>
       </article>
+
+      <article class="game-card ttt-card">
+        <div class="game-art"><div class="tic-cover" role="img" aria-label="Neon Tic Tac Toe grid with X and O pieces"><svg viewBox="0 0 360 260" aria-hidden="true"><g stroke="#58edff" stroke-width="9" stroke-linecap="round"><path d="M140 38v184M220 38v184M70 105h220M70 175h220"/></g><path d="m91 55 37 37m0-37L91 92m142 83 37 37m0-37-37 37" fill="none" stroke="#c8ff54" stroke-width="13" stroke-linecap="round"/><circle cx="180" cy="70" r="23" fill="none" stroke="#ff4f9a" stroke-width="12"/><circle cx="180" cy="140" r="23" fill="none" stroke="#ff4f9a" stroke-width="12"/></svg></div></div>
+        <div class="game-copy"><div class="eyebrow">QUICK MATCH · 3 IN A ROW</div><h3>Tic Tac<br>Toe</h3><p>Claim a line of three before your rival does. Play a friend locally or take on the arcade computer.</p><div class="chips"><span class="chip">✕ Crosses</span><span class="chip">◯ Circles</span><span class="chip">🧠 Computer levels</span></div><a class="btn btn-primary" href="#tic-tac-toe">PREVIEW &amp; PLAY <span aria-hidden="true">→</span></a></div>
+      </article>
+      <section class="ttt-panel" id="tic-tac-toe" aria-labelledby="ttt-title">
+        <div class="ttt-toolbar"><div><div class="eyebrow">NEXT UP</div><h3 id="ttt-title" style="margin:4px 0;font-size:clamp(1.8rem,4vw,2.6rem);letter-spacing:-.05em">Tic Tac Toe</h3></div><button class="btn btn-primary" id="ttt-start">START GAME ▶</button></div>
+        <div class="options" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-bottom:20px">
+          <div><span class="option-label">Opponent</span><div class="segmented" role="group" aria-label="Choose Tic Tac Toe opponent"><button class="choice ttt-opponent" data-opponent="computer" aria-pressed="true">🤖 Computer</button><button class="choice ttt-opponent" data-opponent="friend" aria-pressed="false">🧑‍🤝‍🧑 Friend</button></div></div>
+          <div id="ttt-difficulty-group"><span class="option-label">Computer level</span><div class="segmented" role="group" aria-label="Choose Tic Tac Toe computer level"><button class="choice ttt-difficulty" data-level="easy" aria-pressed="true">Easy</button><button class="choice ttt-difficulty" data-level="normal" aria-pressed="false">Normal</button><button class="choice ttt-difficulty" data-level="hard" aria-pressed="false">Hard</button></div></div>
+        </div>
+        <div class="ttt-board-wrap"><div class="ttt-board" id="ttt-board" role="grid" aria-label="Tic Tac Toe board"></div></div>
+        <p class="ttt-status" id="ttt-status" aria-live="polite">Choose an opponent, then start a new match.</p>
+      </section>
       <details class="rules"><summary>HOW TO PLAY · CLASSIC BOARD RULES</summary><div class="rules-content"><ul><li>Roll and move forward by the number shown. Your first roll moves you onto the board from just before square 1.</li><li>Only landing on a ladder's foot climbs you to its top. Only landing on a snake's head slides you to its tail; passing over one does nothing.</li><li>Reach square 100 by an exact roll. If your move would pass 100, stay where you are and try again next turn.</li><li>Both players may share a square. Turns pass after every roll, including the highest roll.</li></ul><p><strong>Arcade dice handicaps:</strong> Easy: you 2–6, computer 1–4. Normal: both 1–6. Hard: you 1–4, computer 2–6. These custom ranges change the dice odds; the board rules stay the same.</p></div></details>
       <section class="setup" id="choose" aria-labelledby="choose-title"><div><div class="eyebrow">BEFORE THE BELL</div><h3 id="choose-title">Pick your rival.</h3><p>Choose a computer level or share the keyboard for a local head-to-head.</p></div><div class="options"><div><span class="option-label">Opponent</span><div class="segmented" role="group" aria-label="Choose opponent"><button class="choice opponent" data-opponent="computer" aria-pressed="true">🤖 Computer</button><button class="choice opponent" data-opponent="friend" aria-pressed="false">🧑‍🤝‍🧑 Friend</button></div></div><div id="difficulty-group"><span class="option-label">Computer level · easy is a gentler ride</span><div class="segmented" role="group" aria-label="Choose computer difficulty"><button class="choice difficulty" data-difficulty="easy" aria-pressed="true">Easy</button><button class="choice difficulty" data-difficulty="normal" aria-pressed="false">Normal</button><button class="choice difficulty" data-difficulty="hard" aria-pressed="false">Hard</button></div><p class="range-note" id="range-note">You roll 2–6 · Computer rolls 1–4</p></div><button class="btn btn-primary play-now" id="start">START GAME <span aria-hidden="true">▶</span></button></div></section>
       <section class="play-area" id="play-area" aria-label="Snake and Ladders game"><div class="board-wrap"><div class="board" id="board" role="grid" aria-label="Snake and Ladders board from square 1 to square 100"></div></div><aside class="play-panel"><div class="eyebrow">YOUR TURN</div><h3 id="turn-title">Ready?</h3><p class="status" id="status" aria-live="polite">Pick your rival and start the game!</p><div class="dice" id="dice" aria-label="Last dice roll">—</div><button class="btn btn-primary" id="roll">ROLL THE DICE 🎲</button><div class="log" id="log" aria-live="polite"></div></aside></section>
@@ -97,5 +113,26 @@
       updateRanges();
     })();
   </script>
+
+<script>
+(function(){
+  const board=document.getElementById('ttt-board'),status=document.getElementById('ttt-status'),start=document.getElementById('ttt-start');
+  let cells=Array(9).fill(''),opponent='computer',level='easy',active=false,finished=false,turn='X';
+  const wins=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+  function result(b){for(const line of wins){if(b[line[0]]&&b[line[0]]===b[line[1]]&&b[line[1]]===b[line[2]])return b[line[0]]}return b.every(Boolean)?'draw':null}
+  function render(){board.innerHTML='';cells.forEach((mark,i)=>{const button=document.createElement('button');button.type='button';button.className='ttt-cell'+(mark?' '+mark.toLowerCase():'');button.setAttribute('role','gridcell');button.setAttribute('aria-label','Row '+(Math.floor(i/3)+1)+', column '+(i%3+1)+(mark?', '+(mark==='X'?'X':'O'):' empty'));button.textContent=mark;button.disabled=!active||finished||!!mark||(turn==='O'&&opponent==='computer');button.addEventListener('click',()=>move(i));board.appendChild(button)})}
+  function move(i){if(!active||finished||cells[i])return;cells[i]=turn;const outcome=result(cells);if(outcome){finish(outcome);return}turn=turn==='X'?'O':'X';status.textContent=turn==='X'?'Your turn — place an X.':opponent==='computer'?'Computer is thinking…':'Friend’s turn — place an O.';render();if(turn==='O'&&opponent==='computer')setTimeout(computerMove,360)}
+  function finish(outcome){finished=true;active=false;status.textContent=outcome==='draw'?'It’s a draw! Start a new match to play again.':(outcome==='X'?'X wins!':'O wins!')+' Start a new match to play again.';render()}
+  function randomMove(b){const choices=b.map((v,i)=>v?'':i).filter(v=>v!=='');return choices[Math.floor(Math.random()*choices.length)]}
+  function tacticalMove(b,mark){for(let i=0;i<9;i++)if(!b[i]){const copy=b.slice();copy[i]=mark;if(result(copy)===mark)return i}return -1}
+  function minimax(b,isMax){const outcome=result(b);if(outcome==='O')return 10;if(outcome==='X')return -10;if(outcome==='draw')return 0;let best=isMax?-Infinity:Infinity;for(let i=0;i<9;i++)if(!b[i]){b[i]='O';const score=minimax(b,!isMax);b[i]='';best=isMax?Math.max(best,score):Math.min(best,score)}return best}
+  function hardMove(){let best=-Infinity,choice=-1;for(let i=0;i<9;i++)if(!cells[i]){cells[i]='O';const score=minimax(cells,false);cells[i]='';if(score>best){best=score;choice=i}}return choice}
+  function computerMove(){if(!active||finished||turn!=='O')return;let choice;if(level==='hard')choice=hardMove();else if(level==='normal'){choice=tacticalMove(cells,'O');if(choice<0)choice=tacticalMove(cells,'X');if(choice<0)choice=randomMove(cells)}else choice=randomMove(cells);move(choice)}
+  start.addEventListener('click',()=>{cells=Array(9).fill('');turn='X';active=true;finished=false;status.textContent='Your turn — place an X.';render()});
+  document.querySelectorAll('.ttt-opponent').forEach(b=>b.addEventListener('click',()=>{if(active&&!finished)return;opponent=b.dataset.opponent;document.querySelectorAll('.ttt-opponent').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));document.getElementById('ttt-difficulty-group').style.opacity=opponent==='computer'?'1':'.48';if(active&&!finished)status.textContent=opponent==='computer'?'Your turn — place an X.':'Your turn — place an X.';render()}));
+  document.querySelectorAll('.ttt-difficulty').forEach(b=>b.addEventListener('click',()=>{level=b.dataset.level;document.querySelectorAll('.ttt-difficulty').forEach(x=>x.setAttribute('aria-pressed',String(x===b)))}));
+  render();
+})();
+</script>
 </body>
 </html>
